@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeoLab – Oggetti in legno fatti a mano</title>
+<meta name="description" content="LeoLab: oggetti in legno fatti a mano, uno diverso dall'altro. Orologi, lampade, casse audio, portacandele.">
+<meta property="og:title" content="LeoLab – Oggetti in legno fatti a mano">
+<meta property="og:description" content="Non il solito mercatino: pezzi unici in legno, fatti a mano uno per uno.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6efe4;
+    --carta: #fffaf2;
+    --legno: #8a5a2b;
+    --legno-scuro: #4a2f17;
+    --testo: #2e2116;
+    --testo-soft: #6b5745;
+    --bordo: #e4d6c1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--testo);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  header.hero {
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 2px, transparent 2px 9px),
+      linear-gradient(160deg, #6b4220, #3d2612);
+    color: #fbf3e6;
+    padding: 72px 0 64px;
+    text-align: center;
+  }
+  .logo {
+    width: 112px; height: 112px; margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fbf3e6;
+    display: grid; place-items: center;
+    box-shadow: 0 6px 24px rgba(0,0,0,.25);
+  }
+  .logo img { width: 76px; height: 76px; }
+  .firma { margin: 14px 0 0; font-size: 15px; letter-spacing: .3px; opacity: .75; }
+
+  .contatti .card {
+    background: var(--carta); border: 1px solid var(--bordo); border-radius: 18px;
+    padding: 28px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+  }
+  .contatti .card img { width: 72px; height: 72px; flex: none; }
+  .contatti .nome { font-family: "Fraunces", serif; font-size: 24px; font-weight: 700; color: var(--legno-scuro); margin: 0; }
+  .contatti .ruolo { margin: 0; color: var(--testo-soft); }
+  .contatti .azioni { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .contatti .azioni a {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--bordo); background: #fff; border-radius: 12px;
+    padding: 10px 16px; color: var(--legno-scuro); text-decoration: none; font-weight: 600;
+  }
+  .contatti .azioni a:hover { border-color: var(--legno); }
+  .contatti .azioni svg { width: 18px; height: 18px; }
+  .contatti .qr { margin: 0 0 0 auto; text-align: center; }
+  .contatti .qr img { width: 132px; height: 132px; display: block; margin: 0 auto 8px; background: #fff; border-radius: 12px; padding: 6px; }
+  .contatti .qr figcaption { font-size: 13px; color: var(--testo-soft); line-height: 1.5; }
+  .contatti .qr a { color: var(--legno); font-weight: 600; }
+  @media (max-width: 640px) { .contatti .qr { margin: 8px auto 0; } }
+  .contatti .azioni .wa { background: #25d366; border-color: #25d366; color: #fff; }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 700;
+    font-size: clamp(40px, 8vw, 64px);
+    margin: 0; letter-spacing: -.5px;
+  }
+  .sottotitolo { font-size: clamp(17px, 2.6vw, 21px); margin: 8px 0 0; opacity: .9; }
+
+  section { padding: 56px 0; }
+  h2 {
+    font-family: "Fraunces", serif; font-weight: 500;
+    font-size: clamp(26px, 4.5vw, 34px);
+    color: var(--legno-scuro);
+    margin: 0 0 20px;
+  }
+  .chi p { font-size: 18px; max-width: 680px; margin: 0 0 16px; }
+  .chi p:first-of-type::first-line { font-weight: 600; }
+
+  .cosa ul {
+    list-style: none; padding: 0; margin: 24px 0 0;
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .cosa li {
+    background: var(--carta); border: 1px solid var(--bordo);
+    border-radius: 999px; padding: 8px 18px; font-weight: 500; color: var(--legno-scuro);
+  }
+
+  .lavori { background: var(--carta); border-top: 1px solid var(--bordo); border-bottom: 1px solid var(--bordo); }
+  .griglia {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 326px), 1fr));
+    align-items: start;
+  }
+  .griglia .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; }
+
+  .cta { text-align: center; }
+  .bottone {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--legno); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 18px;
+    padding: 16px 28px; border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(74,47,23,.25);
+    transition: background .15s;
+  }
+  .bottone:hover { background: var(--legno-scuro); }
+  .bottone svg { width: 22px; height: 22px; }
+  .cta p { color: var(--testo-soft); margin: 16px 0 0; }
+
+  footer { text-align: center; padding: 32px 0 40px; color: var(--testo-soft); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo"><img src="img/logo.png" alt="Logo LeoLab"></div>
+    <h1>LeoLab</h1>
+    <p class="sottotitolo">Oggetti in legno fatti a mano, uno diverso dall'altro</p>
+    <p class="firma">Leonardo Valeri · artigiano, creazioni in legno · Roma</p>
+  </div>
+</header>
+
+<section class="chi">
+  <div class="wrap">
+    <h2>Non il solito mercatino</h2>
+    <p>Ogni pezzo di LeoLab nasce in laboratorio, a mano, accostando legni diversi uno per uno. Niente stampi e niente produzione in serie: venature, colori e forme cambiano ogni volta, così nessun oggetto è uguale a un altro.</p>
+    <p>Sono oggetti pensati per essere usati e tenuti in casa a lungo, con il carattere del legno da cui nascono.</p>
+  </div>
+</section>
+
+<section class="cosa" style="padding-top:0">
+  <div class="wrap">
+    <h2>Cosa faccio</h2>
+    <ul>
+      <li>Orologi da parete</li>
+      <li>Lampade</li>
+      <li>Casse audio in legno</li>
+      <li>Portacandele</li>
+      <li>Casette per uccelli</li>
+      <li>Staccionate e lavori su misura</li>
+    </ul>
+  </div>
+</section>
+
+<section class="lavori">
+  <div class="wrap">
+    <h2>Alcuni lavori</h2>
+    <div class="griglia">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTnwMTsjD8k/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DTnwMTsjD8k/">Guarda il post su Instagram</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DR6ok-NDAVk/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DR6ok-NDAVk/">Guarda il post su Instagram</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRIJv1XjPNq/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DRIJv1XjPNq/">Guarda il video su Instagram</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOx-qqdjJc-/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DOx-qqdjJc-/">Guarda il post su Instagram</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DN7nPNiDE2f/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DN7nPNiDE2f/">Guarda il post su Instagram</a></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdyZ95DgmZC/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdyZ95DgmZC/">Guarda il post su Instagram</a></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <a class="bottone" href="https://www.instagram.com/superleolab/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      Guarda tutti i lavori su Instagram
+    </a>
+  </div>
+</section>
+
+<section class="contatti" style="padding-top:0">
+  <div class="wrap">
+    <h2>Contatti</h2>
+    <div class="card">
+      <img src="img/logo.png" alt="" aria-hidden="true">
+      <div>
+        <p class="nome">Leonardo Valeri</p>
+        <p class="ruolo">Artigiano · creazioni in legno · Roma</p>
+        <div class="azioni">
+          <a class="wa" href="https://wa.me/393397757104" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+393397757104">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            339 775 7104
+          </a>
+          <a href="mailto:leonardo.valeri@tiscali.it">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            leonardo.valeri@tiscali.it
+          </a>
+          <a href="https://www.instagram.com/superleolab/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            @superleolab
+          </a>
+        </div>
+      </div>
+      <figure class="qr">
+        <img src="img/qr-leolab.svg" alt="QR code per aprire questa pagina">
+        <figcaption>Inquadra per aprire questa pagina<br><a href="img/qr-leolab.png" download>Scarica il QR</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>LeoLab · Leonardo Valeri · creazioni in legno · Roma</footer>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>
