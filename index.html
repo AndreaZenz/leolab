@@ -101,6 +101,12 @@
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 326px), 1fr));
     align-items: start;
   }
+  .consenso {
+    background: var(--bg); border: 1px dashed var(--bordo); border-radius: 18px;
+    padding: 32px 24px; text-align: center;
+  }
+  .consenso p { max-width: 520px; margin: 0 auto 20px; color: var(--testo-soft); }
+  .consenso .bottone { border: 0; cursor: pointer; font-family: inherit; }
   .griglia .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; }
 
   .cta { text-align: center; }
@@ -146,23 +152,25 @@
       <li>Lampade</li>
       <li>Casse audio in legno</li>
       <li>Portacandele</li>
-      <li>Casette per uccelli</li>
-      <li>Staccionate e lavori su misura</li>
-    </ul>
+      <li>Casette per uccelli</li>    </ul>
   </div>
 </section>
 
 <section class="lavori">
   <div class="wrap">
     <h2>Alcuni lavori</h2>
-    <div class="griglia">
+    <div class="consenso" id="consenso">
+      <p>Le foto dei lavori sono sul profilo Instagram di LeoLab. Per mostrarle qui la pagina deve caricare Instagram, che può usare i suoi cookie.</p>
+      <button type="button" class="bottone" id="mostra-lavori">Mostra i lavori da Instagram</button>
+    </div>
+    <div class="griglia" id="griglia" hidden></div>
+    <template id="post-instagram">
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTnwMTsjD8k/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DTnwMTsjD8k/">Guarda il post su Instagram</a></blockquote>
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DR6ok-NDAVk/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DR6ok-NDAVk/">Guarda il post su Instagram</a></blockquote>
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRIJv1XjPNq/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DRIJv1XjPNq/">Guarda il video su Instagram</a></blockquote>
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOx-qqdjJc-/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DOx-qqdjJc-/">Guarda il post su Instagram</a></blockquote>
       <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DN7nPNiDE2f/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DN7nPNiDE2f/">Guarda il post su Instagram</a></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdyZ95DgmZC/" data-instgrm-version="14"><a href="https://www.instagram.com/p/DdyZ95DgmZC/">Guarda il post su Instagram</a></blockquote>
-    </div>
+    </template>
   </div>
 </section>
 
@@ -212,6 +220,17 @@
 
 <footer>LeoLab · Leonardo Valeri · creazioni in legno · Roma</footer>
 
-<script async src="https://www.instagram.com/embed.js"></script>
+<script>
+  document.getElementById('mostra-lavori').addEventListener('click', function () {
+    var griglia = document.getElementById('griglia');
+    griglia.appendChild(document.getElementById('post-instagram').content.cloneNode(true));
+    griglia.hidden = false;
+    document.getElementById('consenso').remove();
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.instagram.com/embed.js';
+    document.body.appendChild(s);
+  });
+</script>
 </body>
 </html>
